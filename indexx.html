@@ -1,99 +1,74 @@
+Claro! Aqui está um exemplo de código HTML para criar uma galeria de quadros. Este exemplo utiliza CSS para estilizar a galeria e torná-la responsiva:
+
+Copy the code
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio de Quadros</title>
+    <title>Galeria de Quadros</title>
     <style>
         body {
-            background-color: #f4e1d2;
-            color: #5a3e36;
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
         }
-        .carousel-container {
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .gallery-item {
             position: relative;
-            max-width: 600px;
-            margin: 40px auto;
             overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background: #ebd5c5;
-            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        .carousel img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-        .description {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        button {
-            background: #c29289;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button:hover {
-            background: #a4746a;
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <h1>Meus Quadros</h1>
-    <div class="carousel-container">
-        <div class="carousel" id="carousel">
-            <div>
-                <img src="quadro1.jpg" alt="Quadro 1">
-                <p class="description">"Acalma o coração" - Inspirado na natureza.</p>
-            </div>
-            <div>
-                <img src="quadro2.jpg" alt="Quadro 2">
-                <p class="description">"Sonhos Flutuantes" - Tons suaves para reflexão.</p>
-            </div>
-            <div>
-                <img src="quadro3.jpg" alt="Quadro 3">
-                <p class="description">"Horizontes Distantes" - Mistura de cores quentes e frias.</p>
-            </div>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="quadro1.jpg" alt="Quadro 1">
         </div>
-        <div class="buttons">
-            <button onclick="previousSlide()">&#10094; Anterior</button>
-            <button onclick="nextSlide()">Próximo &#10095;</button>
+        <div class="gallery-item">
+            <img src="quadro2.jpg" alt="Quadro 2">
         </div>
+        <div class="gallery-item">
+            <img src="quadro3.jpg" alt="Quadro 3">
+        </div>
+        <!-- Adicione mais itens de galeria conforme necessário -->
     </div>
-    
-    <script>
-        let index = 0;
-        function showSlide() {
-            const carousel = document.getElementById('carousel');
-            const slides = document.querySelectorAll('.carousel div');
-            if (index >= slides.length) index = 0;
-            if (index < 0) index = slides.length - 1;
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        }
-        function nextSlide() {
-            index++;
-            showSlide();
-        }
-        function previousSlide() {
-            index--;
-            showSlide();
-        }
-    </script>
 </body>
 </html>
+
+Explicação:
+
+HTML:
+
+A estrutura básica do HTML inclui uma div com a classe gallery que contém várias div com a classe gallery-item. Cada gallery-item contém uma imagem (img).
+
+CSS:
+
+O corpo (body) é estilizado para centralizar a galeria na página.
+A classe .gallery usa display: grid para criar uma grade responsiva que se ajusta automaticamente ao tamanho da tela.
+Cada item da galeria (.gallery-item) tem bordas arredondadas, sombra e um efeito de zoom ao passar o mouse.
+
+Você pode adicionar mais imagens à galeria duplicando as div com a classe gallery-item e alterando o caminho da imagem e o texto alternativo (alt).
